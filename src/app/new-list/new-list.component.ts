@@ -10,6 +10,7 @@ import { TemplateListComponent } from '../template-list/template-list.component'
 import { NgIf } from '@angular/common';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import { IconPickerComponent } from '../icon-picker/icon-picker.component';
+import { FormPromptService } from '../utils/prompt.service';
 
 @Component({
   selector: 'app-new-list',
@@ -25,6 +26,7 @@ import { IconPickerComponent } from '../icon-picker/icon-picker.component';
     ColorPickerComponent,
     IconPickerComponent,
   ],
+  providers: [FormPromptService],
 })
 export class NewListComponent {
   @Output() didCancel = new EventEmitter();
@@ -37,9 +39,19 @@ export class NewListComponent {
 
   activeSegment = 'new-list';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private formPromptService: FormPromptService
+  ) {}
 
-  cancel() {
+  async cancel() {
+    if (this.form.dirty) {
+      const discardChanges =
+        await this.formPromptService.discardChangesPrompt();
+      if (!discardChanges) {
+        return;
+      }
+    }
     this.didCancel.emit();
   }
 

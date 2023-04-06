@@ -5,13 +5,15 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActionSheetController, IonicModule } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
+import { FormPromptService } from '../utils/prompt.service';
 
 @Component({
   selector: 'app-new-reminder',
   templateUrl: 'new-reminder.component.html',
   standalone: true,
   imports: [IonicModule, ReactiveFormsModule, FormsModule],
+  providers: [FormPromptService],
 })
 export class NewReminderComponent {
   @Output() didCancel = new EventEmitter();
@@ -23,37 +25,19 @@ export class NewReminderComponent {
 
   constructor(
     private fb: FormBuilder,
-    private actionSheetCtrl: ActionSheetController
+    private formPromptService: FormPromptService
   ) {
     this.form.invalid;
   }
 
   async cancel() {
     if (this.form.dirty) {
-      const discardChanges = await this.discardChangesPrompt();
+      const discardChanges =
+        await this.formPromptService.discardChangesPrompt();
       if (!discardChanges) {
         return;
       }
     }
     this.didCancel.emit();
-  }
-
-  private async discardChangesPrompt() {
-    const actionSheet = await this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Discard Changes',
-          role: 'destructive',
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-        },
-      ],
-    });
-    await actionSheet.present();
-
-    const { role } = await actionSheet.onDidDismiss();
-    return role === 'destructive';
   }
 }
