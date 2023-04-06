@@ -1,0 +1,7 @@
+{
+  "name": "ionic-angular-reminders-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
