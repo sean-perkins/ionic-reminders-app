@@ -4,13 +4,14 @@ import { IonicModule } from "@ionic/angular";
 import { TemplateListComponent } from "../template-list/template-list.component";
 import { NgIf } from "@angular/common";
 import { ColorPickerComponent } from "../color-picker/color-picker.component";
+import { IconPickerComponent } from "../icon-picker/icon-picker.component";
 
 @Component({
   selector: 'app-new-list',
   templateUrl: 'new-list.component.html',
   styleUrls: ['new-list.component.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule, ReactiveFormsModule, TemplateListComponent, NgIf, ColorPickerComponent],
+  imports: [IonicModule, FormsModule, ReactiveFormsModule, TemplateListComponent, NgIf, ColorPickerComponent, IconPickerComponent],
 })
 export class NewListComponent {
 
@@ -19,7 +20,7 @@ export class NewListComponent {
   form = this.fb.group({
     name: ['', Validators.required],
     color: ['light-blue'],
-    icon: []
+    icon: ['list-outline']
   });
 
   activeSegment = 'new-list';
