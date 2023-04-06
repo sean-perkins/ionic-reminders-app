@@ -1,7 +1,12 @@
 <div class="color-list">
-  <button *ngFor="let color of colors" class="color-option" [class.active]="color === value" [ngStyle]="{
-      'background': 'var(--color-' + color + ')'
-    }" type="button" (click)="select(color)">
-
-  </button>
+  <button
+    *ngFor="let color of colors"
+    class="color-option"
+    [class.active]="color === value"
+    [ngStyle]="{
+      background: 'var(--color-' + color + ')'
+    }"
+    type="button"
+    (click)="select(color)"
+  ></button>
 </div>

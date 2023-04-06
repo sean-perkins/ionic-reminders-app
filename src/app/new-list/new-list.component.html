@@ -7,25 +7,28 @@
     </ion-buttons>
     <ion-title>New List</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true"
-        (click)="onSubmit()">
+      <ion-button
+        fill="clear"
+        [color]="form.invalid ? 'medium' : 'primary'"
+        [disabled]="form.invalid"
+        [strong]="true"
+        (click)="onSubmit()"
+      >
         Add
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment value="new-list" (ionChange)="onListTypeChanged($event)">
-      <ion-segment-button value="new-list">
-        New List
-      </ion-segment-button>
-      <ion-segment-button value="templates">
-        Templates
-      </ion-segment-button>
+      <ion-segment-button value="new-list"> New List </ion-segment-button>
+      <ion-segment-button value="templates"> Templates </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ng-container *ngIf="activeSegment === 'new-list'; then newListForm; else templateList"></ng-container>
+  <ng-container
+    *ngIf="activeSegment === 'new-list'; then newListForm; else templateList"
+  ></ng-container>
 </ion-content>
 
 <ng-template #templateList>
@@ -35,7 +38,11 @@
 <ng-template #newListForm>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-card>
-      <ion-input placeholder="List Name" aria-label="List Name" formControlName="name"></ion-input>
+      <ion-input
+        placeholder="List Name"
+        aria-label="List Name"
+        formControlName="name"
+      ></ion-input>
     </ion-card>
 
     <ion-card>

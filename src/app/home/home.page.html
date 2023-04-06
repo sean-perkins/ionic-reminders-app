@@ -15,7 +15,12 @@
 <ion-footer collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button id="open-new-reminder" fill="clear" color="primary" [strong]="true">
+      <ion-button
+        id="open-new-reminder"
+        fill="clear"
+        color="primary"
+        [strong]="true"
+      >
         <ion-icon slot="start" name="add-circle"></ion-icon>
         New Reminder
       </ion-button>
@@ -36,7 +41,12 @@
           <ion-label>Edit Lists</ion-label>
           <ion-icon slot="end" name="pencil" size="small"></ion-icon>
         </ion-item>
-        <ion-item id="open-templates" [button]="true" [detail]="false" (click)="morePopover.dismiss()">
+        <ion-item
+          id="open-templates"
+          [button]="true"
+          [detail]="false"
+          (click)="morePopover.dismiss()"
+        >
           <ion-label>Templates</ion-label>
           <ion-icon slot="end" name="copy-outline" size="small"></ion-icon>
         </ion-item>
@@ -45,7 +55,11 @@
   </ng-template>
 </ion-popover>
 
-<ion-modal #templateModal trigger="open-templates" [presentingElement]="presentingElement">
+<ion-modal
+  #templateModal
+  trigger="open-templates"
+  [presentingElement]="presentingElement"
+>
   <ng-template>
     <ion-header collapse="fade">
       <ion-toolbar>
@@ -56,7 +70,11 @@
         </ion-buttons>
         <ion-title>Templates</ion-title>
         <ion-buttons slot="end">
-          <ion-button fill="clear" color="primary" (click)="templateModal.dismiss()">
+          <ion-button
+            fill="clear"
+            color="primary"
+            (click)="templateModal.dismiss()"
+          >
             Done
           </ion-button>
         </ion-buttons>
@@ -68,14 +86,28 @@
   </ng-template>
 </ion-modal>
 
-<ion-modal #newReminderModal trigger="open-new-reminder" [presentingElement]="presentingElement">
+<ion-modal
+  #newReminderModal
+  trigger="open-new-reminder"
+  [presentingElement]="presentingElement"
+>
   <ng-template>
-    <app-new-reminder class="ion-page" (didCancel)="newReminderModal.dismiss()"></app-new-reminder>
+    <app-new-reminder
+      class="ion-page"
+      (didCancel)="newReminderModal.dismiss()"
+    ></app-new-reminder>
   </ng-template>
 </ion-modal>
 
-<ion-modal #newListModal trigger="open-new-list" [presentingElement]="presentingElement">
+<ion-modal
+  #newListModal
+  trigger="open-new-list"
+  [presentingElement]="presentingElement"
+>
   <ng-template>
-    <app-new-list class="ion-page" (didCancel)="newListModal.dismiss()"></app-new-list>
+    <app-new-list
+      class="ion-page"
+      (didCancel)="newListModal.dismiss()"
+    ></app-new-list>
   </ng-template>
 </ion-modal>

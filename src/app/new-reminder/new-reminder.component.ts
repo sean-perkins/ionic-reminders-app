@@ -1,26 +1,31 @@
-import { Component, EventEmitter, Output } from "@angular/core";
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { ActionSheetController, IonicModule } from "@ionic/angular";
+import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ActionSheetController, IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-reminder',
   templateUrl: 'new-reminder.component.html',
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, FormsModule]
+  imports: [IonicModule, ReactiveFormsModule, FormsModule],
 })
 export class NewReminderComponent {
-
   @Output() didCancel = new EventEmitter();
 
   form = this.fb.group({
     title: ['', Validators.required],
-    notes: ['']
+    notes: [''],
   });
 
   constructor(
     private fb: FormBuilder,
-    private actionSheetCtrl: ActionSheetController) {
-    this.form.invalid
+    private actionSheetCtrl: ActionSheetController
+  ) {
+    this.form.invalid;
   }
 
   async cancel() {
@@ -43,13 +48,12 @@ export class NewReminderComponent {
         {
           text: 'Cancel',
           role: 'cancel',
-        }
-      ]
+        },
+      ],
     });
     await actionSheet.present();
 
     const { role } = await actionSheet.onDidDismiss();
     return role === 'destructive';
   }
-
 }

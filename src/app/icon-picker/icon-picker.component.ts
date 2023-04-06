@@ -1,7 +1,7 @@
-import { NgFor, NgStyle } from "@angular/common";
-import { Component, Input, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import { NgFor, NgStyle } from '@angular/common';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 const ICONS: string[] = [
   'happy-outline',
@@ -36,13 +36,13 @@ const ICONS: string[] = [
   'american-football',
   'train',
   'airplane',
-  'boat'
-]
+  'boat',
+];
 
 @Component({
-  selector: "app-icon-picker",
-  templateUrl: "./icon-picker.component.html",
-  styleUrls: ["./icon-picker.component.scss"],
+  selector: 'app-icon-picker',
+  templateUrl: './icon-picker.component.html',
+  styleUrls: ['./icon-picker.component.scss'],
   standalone: true,
   imports: [IonicModule, NgFor, NgStyle],
   providers: [
@@ -51,10 +51,9 @@ const ICONS: string[] = [
       useExisting: forwardRef(() => IconPickerComponent),
       multi: true,
     },
-  ]
+  ],
 })
 export class IconPickerComponent implements ControlValueAccessor {
-
   readonly icons = ICONS;
 
   value?: string;
@@ -64,8 +63,8 @@ export class IconPickerComponent implements ControlValueAccessor {
     this.onChange(icon);
   }
 
-  onChange = (value: string) => { };
-  onTouched = () => { };
+  onChange = (value: string) => {};
+  onTouched = () => {};
 
   writeValue(value: string): void {
     this.value = value;

@@ -1,12 +1,12 @@
-import { NgFor, NgStyle } from "@angular/common";
-import { Component, Input, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { IonicModule } from "@ionic/angular";
+import { NgFor, NgStyle } from '@angular/common';
+import { Component, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: "app-color-picker",
-  templateUrl: "./color-picker.component.html",
-  styleUrls: ["./color-picker.component.scss"],
+  selector: 'app-color-picker',
+  templateUrl: './color-picker.component.html',
+  styleUrls: ['./color-picker.component.scss'],
   standalone: true,
   imports: [IonicModule, NgFor, NgStyle],
   providers: [
@@ -15,23 +15,22 @@ import { IonicModule } from "@ionic/angular";
       useExisting: forwardRef(() => ColorPickerComponent),
       multi: true,
     },
-  ]
+  ],
 })
 export class ColorPickerComponent implements ControlValueAccessor {
-
   colors: string[] = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "light-blue",
-    "blue",
-    "violet",
-    "pink",
-    "purple",
-    "brown",
-    "gray",
-    "salmon"
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'light-blue',
+    'blue',
+    'violet',
+    'pink',
+    'purple',
+    'brown',
+    'gray',
+    'salmon',
   ];
 
   value?: string;
@@ -41,8 +40,8 @@ export class ColorPickerComponent implements ControlValueAccessor {
     this.onChange(color);
   }
 
-  onChange = (value: string) => { };
-  onTouched = () => { };
+  onChange = (value: string) => {};
+  onTouched = () => {};
 
   writeValue(value: string): void {
     this.value = value;

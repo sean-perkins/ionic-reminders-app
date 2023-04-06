@@ -9,18 +9,19 @@ import { TemplateListComponent } from '../template-list/template-list.component'
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, NewReminderComponent, NewListComponent, TemplateListComponent],
+  imports: [
+    IonicModule,
+    NewReminderComponent,
+    NewListComponent,
+    TemplateListComponent,
+  ],
 })
 export class HomePage {
+  constructor(public elementRef: ElementRef) {}
 
-  constructor(public elementRef: ElementRef) { }
-
-  editLists() {
-
-  }
+  editLists() {}
 
   get presentingElement() {
     return this.elementRef.nativeElement;
   }
-
 }

@@ -1,6 +1,11 @@
 <div class="icon-list">
-  <button *ngFor="let icon of icons" class="icon-option" [class.active]="icon === value" type="button"
-    (click)="select(icon)">
+  <button
+    *ngFor="let icon of icons"
+    class="icon-option"
+    [class.active]="icon === value"
+    type="button"
+    (click)="select(icon)"
+  >
     <ion-icon [name]="icon"></ion-icon>
   </button>
 </div>
