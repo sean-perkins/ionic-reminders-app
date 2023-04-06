@@ -3,6 +3,42 @@ import { Component, Input, forwardRef } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
+const ICONS: string[] = [
+  'happy-outline',
+  'list-outline',
+  'bookmark',
+  'pin',
+  'gift',
+  'school',
+  'document',
+  'book',
+  'wallet',
+  'card',
+  'cash-outline',
+  'barbell-outline',
+  'walk',
+  'wine',
+  'home',
+  'business',
+  'tv-outline',
+  'musical-notes',
+  'game-controller',
+  'headset',
+  'leaf',
+  'paw',
+  'fish',
+  'basket-outline',
+  'cart',
+  'bag',
+  'football',
+  'baseball',
+  'basketball',
+  'american-football',
+  'train',
+  'airplane',
+  'boat'
+]
+
 @Component({
   selector: "app-icon-picker",
   templateUrl: "./icon-picker.component.html",
@@ -19,41 +55,7 @@ import { IonicModule } from "@ionic/angular";
 })
 export class IconPickerComponent implements ControlValueAccessor {
 
-  icons: string[] = [
-    'happy-outline',
-    'list-outline',
-    'bookmark',
-    'pin',
-    'gift',
-    'school',
-    'document',
-    'book',
-    'wallet',
-    'card',
-    'cash-outline',
-    'barbell-outline',
-    'walk',
-    'wine',
-    'home',
-    'business',
-    'tv-outline',
-    'musical-notes',
-    'game-controller',
-    'headset',
-    'leaf',
-    'paw',
-    'fish',
-    'basket-outline',
-    'cart',
-    'bag',
-    'football',
-    'baseball',
-    'basketball',
-    'american-football',
-    'train',
-    'airplane',
-    'boat'
-  ];
+  readonly icons = ICONS;
 
   value?: string;
 
