@@ -1,0 +1,21 @@
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" color="primary" (click)="cancel()">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Filters</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [strong]="true"> Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content> Include reminders matching x filters. </ion-card-content>
+  </ion-card>
+
+  <ion-list-header> Select Filters </ion-list-header>
+  <ion-card> </ion-card>
+</ion-content>

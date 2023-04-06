@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -12,6 +12,7 @@ import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import { IconPickerComponent } from '../icon-picker/icon-picker.component';
 import { FormPromptService } from '../../utils/prompt.service';
 import { IconPreviewComponent } from 'src/app/shared/icon-preview/icon-preview.component';
+import { SelectFilterComponent } from '../select-filter/select-filter.component';
 
 @Component({
   selector: 'app-new-list',
@@ -22,12 +23,13 @@ import { IconPreviewComponent } from 'src/app/shared/icon-preview/icon-preview.c
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
-    TemplateListComponent,
     NgIf,
+    NgStyle,
     ColorPickerComponent,
     IconPickerComponent,
     IconPreviewComponent,
-    NgStyle
+    SelectFilterComponent,
+    TemplateListComponent,
   ],
   providers: [FormPromptService],
 })
@@ -43,9 +45,10 @@ export class NewListComponent {
   activeSegment = 'new-list';
 
   constructor(
+    private elementRef: ElementRef,
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) { }
+  ) {}
 
   async cancel() {
     if (this.form.dirty) {
@@ -65,5 +68,9 @@ export class NewListComponent {
 
   onSubmit() {
     console.log('form', this.form.value);
+  }
+
+  get presentingElement() {
+    return this.elementRef.nativeElement.closest('ion-modal');
   }
 }

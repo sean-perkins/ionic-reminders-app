@@ -1,27 +1,19 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { FormPromptService } from '../../utils/prompt.service';
+import { FormPromptService } from 'src/app/utils/prompt.service';
 
 @Component({
-  selector: 'app-new-reminder',
-  templateUrl: 'new-reminder.component.html',
+  selector: 'app-select-filter',
+  templateUrl: 'select-filter.component.html',
   standalone: true,
   imports: [IonicModule, ReactiveFormsModule, FormsModule],
   providers: [FormPromptService],
 })
-export class NewReminderComponent {
+export class SelectFilterComponent {
   @Output() didCancel = new EventEmitter();
 
-  form = this.fb.group({
-    title: ['', Validators.required],
-    notes: [''],
-  });
+  form = this.fb.group({});
 
   constructor(
     private fb: FormBuilder,
