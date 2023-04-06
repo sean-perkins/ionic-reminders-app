@@ -1,0 +1,18 @@
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" color="primary" (click)="cancel()">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true">
+        Add
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+</ion-content>

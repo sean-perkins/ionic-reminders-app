@@ -12,6 +12,22 @@
   <ion-searchbar></ion-searchbar>
 </ion-content>
 
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button id="open-new-reminder" fill="clear" color="primary" [strong]="true">
+        <ion-icon slot="start" name="add-circle"></ion-icon>
+        New Reminder
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="open-new-list" fill="clear" color="primary">
+        Add List
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
 <ion-popover #morePopover trigger="more" [keepContentsMounted]="true">
   <ng-template>
     <ion-content>
@@ -29,7 +45,7 @@
   </ng-template>
 </ion-popover>
 
-<ion-modal #templateModal trigger="open-templates" [presentingElement]="templateModalPresentingElement">
+<ion-modal #templateModal trigger="open-templates" [presentingElement]="presentingElement">
   <ng-template>
     <ion-header collapse="fade">
       <ion-toolbar>
@@ -59,5 +75,17 @@
         </ion-text>
       </div>
     </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal #newReminderModal trigger="open-new-reminder" [presentingElement]="presentingElement">
+  <ng-template>
+    <app-new-reminder class="ion-page" (didCancel)="newReminderModal.dismiss()"></app-new-reminder>
+  </ng-template>
+</ion-modal>
+
+<ion-modal #newListModal trigger="open-new-list" [presentingElement]="presentingElement">
+  <ng-template>
+    <app-new-list class="ion-page" (didCancel)="newListModal.dismiss()"></app-new-list>
   </ng-template>
 </ion-modal>

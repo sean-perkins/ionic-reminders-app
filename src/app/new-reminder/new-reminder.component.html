@@ -1,0 +1,30 @@
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" color="primary" (click)="cancel()">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Reminder</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true">
+        Add
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="form">
+    <ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="Title" aria-label="Title" formControlName="title"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-textarea placeholder="Notes" aria-label="Notes" [autoGrow]="true" rows="5"
+            formControlName="notes"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </form>
+</ion-content>
