@@ -3,11 +3,10 @@ import { ActionSheetController } from '@ionic/angular';
 
 @Injectable()
 export class FormPromptService {
-  constructor(private actionSheetCtrl: ActionSheetController) {}
+  constructor(private actionSheetCtrl: ActionSheetController) { }
 
   /**
    * Displays a prompt to the user asking if they want to discard changes.
-   * @param actionSheetCtrl
    * @returns true if the user wants to discard changes, false otherwise.
    */
   async discardChangesPrompt() {
