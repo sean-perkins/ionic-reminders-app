@@ -1,0 +1,23 @@
+.color-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.color-option {
+  width: 32px;
+  height: 32px;
+
+  min-width: 32px;
+
+  border-radius: 50%;
+
+  background: rgb(41, 39, 39);
+
+  cursor: pointer;
+}
+
+.color-option.active {
+  outline: 2px solid #c5c5c7;
+  outline-offset: 2px;
+}

@@ -7,12 +7,56 @@
     </ion-buttons>
     <ion-title>New List</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true">
+      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true"
+        (click)="onSubmit()">
         Add
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment value="new-list" (ionChange)="onListTypeChanged($event)">
+      <ion-segment-button value="new-list">
+        New List
+      </ion-segment-button>
+      <ion-segment-button value="templates">
+        Templates
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-
+  <ng-container *ngIf="activeSegment === 'new-list'; then newListForm; else templateList"></ng-container>
 </ion-content>
+
+<ng-template #templateList>
+  <app-template-list></app-template-list>
+</ng-template>
+
+<ng-template #newListForm>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-input placeholder="List Name" aria-label="List Name" formControlName="name"></ion-input>
+    </ion-card>
+
+    <ion-card>
+      <ion-list>
+        <ion-item [button]="true">
+          <div>
+            Make into Smart List <br />
+            <small>Organize using tags and other filters</small>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <app-color-picker formControlName="color"></app-color-picker>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+
+    </ion-card>
+  </form>
+</ng-template>

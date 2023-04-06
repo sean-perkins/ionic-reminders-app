@@ -1,12 +1,16 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
+import { TemplateListComponent } from "../template-list/template-list.component";
+import { NgIf } from "@angular/common";
+import { ColorPickerComponent } from "../color-picker/color-picker.component";
 
 @Component({
   selector: 'app-new-list',
-  templateUrl: './new-list.component.html',
+  templateUrl: 'new-list.component.html',
+  styleUrls: ['new-list.component.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule, ReactiveFormsModule],
+  imports: [IonicModule, FormsModule, ReactiveFormsModule, TemplateListComponent, NgIf, ColorPickerComponent],
 })
 export class NewListComponent {
 
@@ -14,14 +18,25 @@ export class NewListComponent {
 
   form = this.fb.group({
     name: ['', Validators.required],
-    color: [],
+    color: ['light-blue'],
     icon: []
   });
+
+  activeSegment = 'new-list';
 
   constructor(private fb: FormBuilder) { }
 
   cancel() {
     this.didCancel.emit();
+  }
+
+  onListTypeChanged({ detail }: any) {
+    const type = detail.value as string;
+    this.activeSegment = type;
+  }
+
+  onSubmit() {
+    console.log('form', this.form.value);
   }
 
 }
