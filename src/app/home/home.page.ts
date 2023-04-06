@@ -1,8 +1,8 @@
 import { Component, ElementRef } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { NewReminderComponent } from '../new-reminder/new-reminder.component';
-import { NewListComponent } from '../new-list/new-list.component';
-import { TemplateListComponent } from '../template-list/template-list.component';
+import { NewReminderComponent } from '../forms/new-reminder/new-reminder.component';
+import { NewListComponent } from '../forms/new-list/new-list.component';
+import { TemplateListComponent } from '../shared/template-list/template-list.component';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +17,9 @@ import { TemplateListComponent } from '../template-list/template-list.component'
   ],
 })
 export class HomePage {
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef) { }
 
-  editLists() {}
+  editLists() { }
 
   get presentingElement() {
     return this.elementRef.nativeElement;

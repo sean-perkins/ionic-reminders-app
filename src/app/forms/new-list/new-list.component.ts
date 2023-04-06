@@ -6,11 +6,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { TemplateListComponent } from '../template-list/template-list.component';
+import { TemplateListComponent } from '../../shared/template-list/template-list.component';
 import { NgIf } from '@angular/common';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import { IconPickerComponent } from '../icon-picker/icon-picker.component';
-import { FormPromptService } from '../utils/prompt.service';
+import { FormPromptService } from '../../utils/prompt.service';
 
 @Component({
   selector: 'app-new-list',
@@ -42,7 +42,7 @@ export class NewListComponent {
   constructor(
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) {}
+  ) { }
 
   async cancel() {
     if (this.form.dirty) {

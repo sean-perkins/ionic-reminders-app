@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { FormPromptService } from '../utils/prompt.service';
+import { FormPromptService } from '../../utils/prompt.service';
 
 @Component({
   selector: 'app-new-reminder',
