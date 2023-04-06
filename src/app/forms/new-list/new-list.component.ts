@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TemplateListComponent } from '../../shared/template-list/template-list.component';
-import { NgIf } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import { IconPickerComponent } from '../icon-picker/icon-picker.component';
 import { FormPromptService } from '../../utils/prompt.service';
@@ -27,6 +27,7 @@ import { IconPreviewComponent } from 'src/app/shared/icon-preview/icon-preview.c
     ColorPickerComponent,
     IconPickerComponent,
     IconPreviewComponent,
+    NgStyle
   ],
   providers: [FormPromptService],
 })
@@ -44,7 +45,7 @@ export class NewListComponent {
   constructor(
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) {}
+  ) { }
 
   async cancel() {
     if (this.form.dirty) {
