@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  border-radius: 50%;
+}
+
+:host[size="small"] {
+  width: 20px;
+  height: 20px;
+}
+
+:host[size="large"] {
+  width: 90px;
+  height: 90px;
+
+  font-size: 48px;
+}

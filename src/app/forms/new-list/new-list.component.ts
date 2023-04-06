@@ -11,6 +11,7 @@ import { NgIf } from '@angular/common';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
 import { IconPickerComponent } from '../icon-picker/icon-picker.component';
 import { FormPromptService } from '../../utils/prompt.service';
+import { IconPreviewComponent } from 'src/app/shared/icon-preview/icon-preview.component';
 
 @Component({
   selector: 'app-new-list',
@@ -25,6 +26,7 @@ import { FormPromptService } from '../../utils/prompt.service';
     NgIf,
     ColorPickerComponent,
     IconPickerComponent,
+    IconPreviewComponent,
   ],
   providers: [FormPromptService],
 })
@@ -42,7 +44,7 @@ export class NewListComponent {
   constructor(
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) { }
+  ) {}
 
   async cancel() {
     if (this.form.dirty) {

@@ -17,9 +17,9 @@ import { TemplateListComponent } from '../shared/template-list/template-list.com
   ],
 })
 export class HomePage {
-  constructor(public elementRef: ElementRef) { }
+  constructor(public elementRef: ElementRef) {}
 
-  editLists() { }
+  editLists() {}
 
   get presentingElement() {
     return this.elementRef.nativeElement;

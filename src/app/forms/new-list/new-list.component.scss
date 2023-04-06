@@ -1,3 +1,31 @@
 ion-segment {
   width: 100%;
 }
+
+.form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  padding: 16px;
+}
+
+app-icon-preview {
+  margin-bottom: 16px;
+
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.input-name {
+  --placeholder-color: var(--ion-color-medium);
+  --color: var(--ion-color-primary);
+
+  background: #e3e3e5;
+  border-radius: 10px;
+
+  font-size: 18px;
+  font-weight: bold;
+}
