@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -9,5 +9,15 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class HomePage {
-  constructor() {}
+
+  constructor(public elementRef: ElementRef) { }
+
+  editLists() {
+
+  }
+
+  get templateModalPresentingElement() {
+    return this.elementRef.nativeElement;
+  }
+
 }
