@@ -1,7 +1,9 @@
 .icon-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(48px, auto);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icon-option {
@@ -13,6 +15,8 @@
   border-radius: 50%;
 
   background: #f4f3f4;
+
+  margin: auto;
 
   font-size: 18px;
 
