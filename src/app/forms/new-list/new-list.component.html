@@ -34,7 +34,7 @@
       <div class="form-section">
         <app-icon-preview [icon]="form.get('icon')?.value" [color]="form.get('color')?.value"
           size="large"></app-icon-preview>
-        <ion-input class="ion-text-center input-name" placeholder="List Name" aria-label="List Name"
+        <ion-input #nameInput class="ion-text-center input-name" placeholder="List Name" aria-label="List Name"
           formControlName="name" [clearInput]="true" [ngStyle]="{
             '--color': 'var(--color-' + form.get('color')?.value + ')'
           }"></ion-input>

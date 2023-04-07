@@ -1,11 +1,11 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonInput, IonicModule } from '@ionic/angular';
 import { TemplateListComponent } from '../../shared/template-list/template-list.component';
 import { NgIf, NgStyle } from '@angular/common';
 import { ColorPickerComponent } from '../color-picker/color-picker.component';
@@ -37,6 +37,8 @@ import { Subject, takeUntil } from 'rxjs';
 export class NewListComponent implements OnInit, OnDestroy {
   @Output() didCancel = new EventEmitter();
   @Output() statusChange = new EventEmitter<boolean>();
+
+  @ViewChild('nameInput', { static: false }) nameInput?: IonInput;
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -76,6 +78,17 @@ export class NewListComponent implements OnInit, OnDestroy {
       }
     }
     this.didCancel.emit();
+  }
+
+  /**
+   * Focuses the list name input if the new list segment is active.
+   * This method is part of the public API and is intended to be called externally.
+   * @publicApi
+   */
+  focusListName() {
+    if (this.activeSegment === 'new-list' && this.nameInput) {
+      this.nameInput.setFocus();
+    }
   }
 
   onListTypeChanged({ detail }: any) {

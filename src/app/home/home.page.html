@@ -75,7 +75,7 @@
 </ion-modal>
 
 <ion-modal #newListModal trigger="open-new-list" [presentingElement]="presentingElement"
-  [canDismiss]="canDismissNewList">
+  [canDismiss]="canDismissNewList" (didPresent)="newList.focusListName()">
   <ng-template>
     <app-new-list #newList class="ion-page" (didCancel)="newListModal.dismiss()"
       (statusChange)="onNewListStatusChange($event)"></app-new-list>
