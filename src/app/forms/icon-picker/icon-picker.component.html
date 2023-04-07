@@ -1,6 +1,11 @@
 <div class="icon-list">
-  <button *ngFor="let icon of icons; first as isFirst" class="icon-option" [class.active]="icon === value" type="button"
-    (click)="select(icon)">
-    <ion-icon [name]="icon" [color]="isFirst ? 'primary': 'dark'"></ion-icon>
+  <button
+    *ngFor="let icon of icons; first as isFirst"
+    class="icon-option"
+    [class.active]="icon === value"
+    type="button"
+    (click)="select(icon)"
+  >
+    <ion-icon [name]="icon" [color]="isFirst ? 'primary' : 'dark'"></ion-icon>
   </button>
 </div>

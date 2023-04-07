@@ -7,8 +7,13 @@
     </ion-buttons>
     <ion-title>New List</ion-title>
     <ion-buttons slot="end">
-      <ion-button fill="clear" [color]="form.invalid ? 'medium' : 'primary'" [disabled]="form.invalid" [strong]="true"
-        (click)="onSubmit()">
+      <ion-button
+        fill="clear"
+        [color]="form.invalid ? 'medium' : 'primary'"
+        [disabled]="form.invalid"
+        [strong]="true"
+        (click)="onSubmit()"
+      >
         Add
       </ion-button>
     </ion-buttons>
@@ -21,7 +26,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ng-container *ngIf="activeSegment === 'new-list'; then newListForm; else templateList"></ng-container>
+  <ng-container
+    *ngIf="activeSegment === 'new-list'; then newListForm; else templateList"
+  ></ng-container>
 </ion-content>
 
 <ng-template #templateList>
@@ -32,12 +39,22 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ion-card>
       <div class="form-section">
-        <app-icon-preview [icon]="form.get('icon')?.value" [color]="form.get('color')?.value"
-          size="large"></app-icon-preview>
-        <ion-input #nameInput class="ion-text-center input-name" placeholder="List Name" aria-label="List Name"
-          formControlName="name" [clearInput]="true" [ngStyle]="{
+        <app-icon-preview
+          [icon]="form.get('icon')?.value"
+          [color]="form.get('color')?.value"
+          size="large"
+        ></app-icon-preview>
+        <ion-input
+          #nameInput
+          class="ion-text-center input-name"
+          placeholder="List Name"
+          aria-label="List Name"
+          formControlName="name"
+          [clearInput]="true"
+          [ngStyle]="{
             '--color': 'var(--color-' + form.get('color')?.value + ')'
-          }"></ion-input>
+          }"
+        ></ion-input>
       </div>
     </ion-card>
 
@@ -53,9 +70,16 @@
           </ion-label>
         </ion-item>
 
-        <ion-modal #selectFilterModal trigger="select-filter" [presentingElement]="presentingElement">
+        <ion-modal
+          #selectFilterModal
+          trigger="select-filter"
+          [presentingElement]="presentingElement"
+        >
           <ng-template>
-            <app-select-filter class="ion-page" (didCancel)="selectFilterModal.dismiss()"></app-select-filter>
+            <app-select-filter
+              class="ion-page"
+              (didCancel)="selectFilterModal.dismiss()"
+            ></app-select-filter>
           </ng-template>
         </ion-modal>
       </ion-list>

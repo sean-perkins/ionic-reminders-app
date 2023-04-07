@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -61,14 +69,11 @@ export class NewListComponent implements OnInit, OnDestroy {
     private elementRef: ElementRef,
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.form
-      .statusChanges
-      .pipe(
-        takeUntil(this.destroy$)
-      )
+    this.form.statusChanges
+      .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.statusChange.emit(this.canDismiss));
   }
 
@@ -111,5 +116,4 @@ export class NewListComponent implements OnInit, OnDestroy {
   get presentingElement() {
     return this.elementRef.nativeElement.closest('ion-modal');
   }
-
 }

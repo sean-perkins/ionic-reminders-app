@@ -16,20 +16,20 @@ import { FormPromptService } from '../utils/prompt.service';
     NewListComponent,
     TemplateListComponent,
   ],
-  providers: [
-    FormPromptService
-  ]
+  providers: [FormPromptService],
 })
 export class HomePage {
-
   @ViewChild('newList') newList!: NewListComponent;
 
   // The validity state of the new list form
   private newListFormValid = true;
 
-  constructor(public elementRef: ElementRef, private formPromptService: FormPromptService) { }
+  constructor(
+    public elementRef: ElementRef,
+    private formPromptService: FormPromptService
+  ) {}
 
-  editLists() { }
+  editLists() {}
 
   onNewListStatusChange(status: boolean) {
     this.newListFormValid = status;
@@ -41,7 +41,7 @@ export class HomePage {
     }
     const discardChanges = await this.formPromptService.discardChangesPrompt();
     return discardChanges;
-  }
+  };
 
   get presentingElement() {
     return this.elementRef.nativeElement;
