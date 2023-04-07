@@ -30,3 +30,26 @@ app-icon-preview {
   font-size: 18px;
   font-weight: bold;
 }
+
+.select-filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-blue);
+  border-radius: 6px;
+
+  width: 26px;
+  height: 26px;
+
+  color: var(--color-blue);
+}
+
+.select-filter-icon ion-icon {
+  background: white;
+  border-radius: 50%;
+
+  padding: 2px;
+
+  font-size: 14px;
+}

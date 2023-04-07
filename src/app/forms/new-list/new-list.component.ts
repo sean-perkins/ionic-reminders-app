@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormsModule,
@@ -13,6 +13,7 @@ import { IconPickerComponent } from '../icon-picker/icon-picker.component';
 import { FormPromptService } from '../../utils/prompt.service';
 import { IconPreviewComponent } from 'src/app/shared/icon-preview/icon-preview.component';
 import { SelectFilterComponent } from '../select-filter/select-filter.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-new-list',
@@ -33,8 +34,9 @@ import { SelectFilterComponent } from '../select-filter/select-filter.component'
   ],
   providers: [FormPromptService],
 })
-export class NewListComponent {
+export class NewListComponent implements OnInit, OnDestroy {
   @Output() didCancel = new EventEmitter();
+  @Output() statusChange = new EventEmitter<boolean>();
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -44,14 +46,29 @@ export class NewListComponent {
 
   activeSegment = 'new-list';
 
+  private readonly destroy$ = new Subject<void>();
+
   constructor(
     private elementRef: ElementRef,
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) {}
+  ) { }
+
+  ngOnInit() {
+    this.form
+      .statusChanges
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => this.statusChange.emit(this.canDismiss));
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+  }
 
   async cancel() {
-    if (this.form.dirty) {
+    if (!this.canDismiss) {
       const discardChanges =
         await this.formPromptService.discardChangesPrompt();
       if (!discardChanges) {
@@ -72,5 +89,12 @@ export class NewListComponent {
 
   get presentingElement() {
     return this.elementRef.nativeElement.closest('ion-modal');
+  }
+
+  get canDismiss() {
+    if (this.form.valid || !this.form.dirty) {
+      return true;
+    }
+    return false;
   }
 }
