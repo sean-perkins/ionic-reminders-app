@@ -30,9 +30,9 @@ export class HomePage {
   constructor(
     public elementRef: ElementRef,
     private formPromptService: FormPromptService
-  ) { }
+  ) {}
 
-  editLists() { }
+  editLists() {}
 
   canDismissNewList = async () => {
     if (this.newListFormValid) {

@@ -58,6 +58,7 @@ export class NewListComponent implements OnInit, OnDestroy {
   activeSegment = 'new-list';
 
   private readonly destroy$ = new Subject<void>();
+  private focusInputNextRender = false;
 
   private get canDismiss() {
     if (this.form.valid || !this.form.dirty) {
@@ -70,12 +71,19 @@ export class NewListComponent implements OnInit, OnDestroy {
     private elementRef: ElementRef,
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.form.statusChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => this.statusChange.emit(this.canDismiss));
+  }
+
+  ngAfterViewChecked() {
+    if (this.focusInputNextRender) {
+      this.focusListName();
+      this.focusInputNextRender = false;
+    }
   }
 
   ngOnDestroy() {
@@ -101,13 +109,24 @@ export class NewListComponent implements OnInit, OnDestroy {
    */
   focusListName() {
     if (this.activeSegment === 'new-list' && this.nameInput) {
-      this.nameInput.setFocus();
+      setTimeout(() => {
+        if (this.nameInput) {
+          this.nameInput.setFocus();
+        }
+      }, 300);
     }
   }
 
   onListTypeChanged({ detail }: any) {
     const type = detail.value as string;
     this.activeSegment = type;
+
+    /**
+     * Sets a flag that will focus the input after
+     * change detection has finished running.
+     */
+    this.focusInputNextRender = true;
+
     this.segmentChange.emit(type);
   }
 
