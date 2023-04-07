@@ -101,6 +101,9 @@
 
 <ion-modal
   #newListModal
+  class="new-list-modal"
+  [class.segment-list]="newListSegment === 'new-list'"
+  [class.segment-templates]="newListSegment === 'templates'"
   trigger="open-new-list"
   [presentingElement]="presentingElement"
   [canDismiss]="canDismissNewList"
@@ -112,6 +115,7 @@
       class="ion-page"
       (didCancel)="newListModal.dismiss()"
       (statusChange)="onNewListStatusChange($event)"
+      (segmentChange)="onNewListSegmentChange($event)"
     ></app-new-list>
   </ng-template>
 </ion-modal>

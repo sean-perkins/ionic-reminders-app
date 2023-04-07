@@ -51,3 +51,15 @@
   --color-gray: #5b6770;
   --color-salmon: #d9a59f;
 }
+
+.new-list-modal {
+  &.segment-list {
+    ion-header,
+    ion-content {
+      --background: var(--ion-color-light-tint);
+    }
+    ion-header ion-toolbar {
+      background: var(--ion-color-light-tint);
+    }
+  }
+}

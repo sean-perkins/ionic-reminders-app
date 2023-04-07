@@ -21,19 +21,18 @@ import { FormPromptService } from '../utils/prompt.service';
 export class HomePage {
   @ViewChild('newList') newList!: NewListComponent;
 
+  // The active segment of the new list form
+  newListSegment = 'new-list';
+
   // The validity state of the new list form
   private newListFormValid = true;
 
   constructor(
     public elementRef: ElementRef,
     private formPromptService: FormPromptService
-  ) {}
+  ) { }
 
-  editLists() {}
-
-  onNewListStatusChange(status: boolean) {
-    this.newListFormValid = status;
-  }
+  editLists() { }
 
   canDismissNewList = async () => {
     if (this.newListFormValid) {
@@ -42,6 +41,14 @@ export class HomePage {
     const discardChanges = await this.formPromptService.discardChangesPrompt();
     return discardChanges;
   };
+
+  onNewListStatusChange(status: boolean) {
+    this.newListFormValid = status;
+  }
+
+  onNewListSegmentChange(segment: string) {
+    this.newListSegment = segment;
+  }
 
   get presentingElement() {
     return this.elementRef.nativeElement;

@@ -45,6 +45,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class NewListComponent implements OnInit, OnDestroy {
   @Output() didCancel = new EventEmitter();
   @Output() statusChange = new EventEmitter<boolean>();
+  @Output() segmentChange = new EventEmitter<string>();
 
   @ViewChild('nameInput', { static: false }) nameInput?: IonInput;
 
@@ -69,7 +70,7 @@ export class NewListComponent implements OnInit, OnDestroy {
     private elementRef: ElementRef,
     private fb: FormBuilder,
     private formPromptService: FormPromptService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.form.statusChanges
@@ -107,6 +108,7 @@ export class NewListComponent implements OnInit, OnDestroy {
   onListTypeChanged({ detail }: any) {
     const type = detail.value as string;
     this.activeSegment = type;
+    this.segmentChange.emit(type);
   }
 
   onSubmit() {
