@@ -50,6 +50,13 @@ export class NewListComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
+  private get canDismiss() {
+    if (this.form.valid || !this.form.dirty) {
+      return true;
+    }
+    return false;
+  }
+
   constructor(
     private elementRef: ElementRef,
     private fb: FormBuilder,
@@ -77,6 +84,7 @@ export class NewListComponent implements OnInit, OnDestroy {
         return;
       }
     }
+    this.statusChange.emit(true);
     this.didCancel.emit();
   }
 
@@ -104,10 +112,4 @@ export class NewListComponent implements OnInit, OnDestroy {
     return this.elementRef.nativeElement.closest('ion-modal');
   }
 
-  get canDismiss() {
-    if (this.form.valid || !this.form.dirty) {
-      return true;
-    }
-    return false;
-  }
 }
