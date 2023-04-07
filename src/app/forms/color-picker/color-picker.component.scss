@@ -1,7 +1,9 @@
 .color-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(48px, auto);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .color-option {
@@ -11,6 +13,8 @@
   min-width: 32px;
 
   border-radius: 50%;
+
+  margin: auto;
 
   background: rgb(41, 39, 39);
 
